@@ -1,0 +1,38 @@
+/*
+*图文混排文章编辑页面css
+*/
+
+.zy_post_button{
+    background: url(../../images/app/uploadBtn.png) no-repeat;
+    font-size: 14px;
+    height: 30px;
+    width: 60px;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.zy_post_div{
+    width: 90%;
+    margin:5px auto;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+    font-style: italic;
+    color:#CECFCF;
+}
+.zy_background_percent{
+    display: block;
+    text-align: center;
+}
+.zy_background{
+    width: 80%;
+    margin: 0px auto 10px auto;
+    display: block;
+}
+/*-----------------修改wordpress的固有样式=================*/
+.attachment-post-thumbnail{
+    display: block;
+    margin: auto;
+    width: 80%;
+    height: auto;
+}
