@@ -85,9 +85,8 @@ class Simple_Responsive_Slider {
 	$max_width = (empty($settings['max_width'])) ? '1000' : $settings['max_width'];
 	
 	?>
-	<script type="text/javascript">
+
 	jQuery(document).ready(function($) {
-		$(function() {
 			$(".rslides").responsiveSlides({
 			  auto: <?php echo $auto;?>,             // Boolean: Animate automatically, true or false
 			  speed: <?php echo $speed;?>,            // Integer: Speed of the transition, in milliseconds
@@ -106,9 +105,8 @@ class Simple_Responsive_Slider {
 			  before: function(){},   // Function: Before callback
 			  after: function(){}     // Function: After callback
 			});
-		});
 	 });
-	</script>
+
 	<?php
     }    
 

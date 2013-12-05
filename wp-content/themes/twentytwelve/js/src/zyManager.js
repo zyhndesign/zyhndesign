@@ -6,23 +6,22 @@
  * To change this template use File | Settings | File Templates.
  */
 var ZY=(function(){
-    var menu=$("#menu"),prevBtn=$("#prevPage"),nextBtn=$("#nextPage"),
-        wrap=$("#wrap"),contentEl=$("#content"),mainContent=$("#mainContent");
+    var menu=null,prevBtn=null,nextBtn=null,body=null,
+        wrap=null,contentEl=null,mainContent=null;
     var currentPageNumber=1;
-    var currentList=$("ul.productList:eq(0)"),currentListIndex=0;
-    var productListPages=[Math.ceil($("ul.productList:eq(0) li").length/3),Math.ceil($("ul.productList:eq(1) li").length/3),Math.ceil($("ul.productList:eq(2) li").length/3)];
-    var headerHeight=$("#topHeader").height(),menuHeight=menu.height();
-    var indexEl=$("#index"),productEl=$("#product"),companyEl=$("#company"),joinUsEl=$("#joinUs");
-    var indexTop=indexEl.offset().top,productTop=productEl.offset().top,
-        companyTop=companyEl.offset().top,joinUsTop=joinUsEl.offset().top;
+    var currentList=null,currentListIndex=0;
+    var productListPages=[];
+    var headerHeight=0;
+    var indexEl=null,productEl=null,companyEl=null,joinUsEl=null;
+    var indexTop=0,productTop=0,companyTop=0,joinUsTop=0;
 
-    var indexHeight=indexEl.innerHeight(),productHeight=productEl.innerHeight(),
-        companyHeight=companyEl.innerHeight(),joinUsHeight=joinUsEl.innerHeight();
+    var indexHeight=0,productHeight=0,companyHeight=0,joinUsHeight=0;
 
-    var indexA= menu.find("li:eq(0) a"),productA= menu.find("li:eq(1) a"),
-        companyA= menu.find("li:eq(2) a"),joinUsA= menu.find("li:eq(3) a");
+    var indexA= null,productA= null,companyA= null,joinUsA= null;
 
     var iOS=navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false;
+
+    var loadingHtml="<div class='loadingSpinner'></div>";
 
     return {
 
@@ -30,12 +29,70 @@ var ZY=(function(){
          * 启动函数，执行一些检测
          */
          init:function(){
+            body=$("body");
+            menu=$("#menu");
+            prevBtn=$("#prevPage");
+            nextBtn=$("#nextPage");
+            wrap=$("#wrap");
+            contentEl=$("#content");
+            mainContent=$("#mainContent");
+
+            this.hideWrap();
+
+            currentList=$("ul.productList:eq(0)");
+            productListPages=[Math.ceil($("ul.productList:eq(0) li").length/3),Math.ceil($("ul.productList:eq(1) li").length/3),Math.ceil($("ul.productList:eq(2) li").length/3)];
+
+            indexEl=$("#index");
+            productEl=$("#product");
+            companyEl=$("#company");
+            joinUsEl=$("#joinUs");
+
+            indexA= menu.find("li:eq(0) a");
+            productA= menu.find("li:eq(1) a");
+            companyA= menu.find("li:eq(2) a");
+            joinUsA= menu.find("li:eq(3) a");
+
+            indexTop=indexEl.offset().top;
+            productTop=productEl.offset().top;
+            companyTop=companyEl.offset().top;
+            joinUsTop=joinUsEl.offset().top;
+
+            headerHeight=$("#topHeader").outerHeight();
+            indexHeight=indexEl.outerHeight();
+            productHeight=productEl.outerHeight();
+            companyHeight=companyEl.outerHeight();
+            joinUsHeight=joinUsEl.outerHeight();
+
             if(iOS){
                 $("#listContainer").addClass("touchHscroll");
             }
 
+            //窗口滚动事件,需要放到图片加载完后绑定，因为图片没加载完是无法获取高度的
+            $(window).scroll(function(){
+                ZY.windowScroll();
+            });
+
             //加载后，激发一下scroll事件以更新页面的显示状态,有可能下拉到一半然后刷新，此时下拉条是在中间
             $(window).trigger("scroll");
+        },
+
+        /**
+         * 显示wrap层
+         * @param {Boolean} showLoading 是否显示loading状态
+         */
+        showWrap:function(showLoading){
+            if(showLoading===true){
+                wrap.html(loadingHtml);
+            }
+
+            wrap.removeClass("hidden");
+        },
+
+        /**
+         * 隐藏wrap层
+         */
+        hideWrap:function(){
+            wrap.html("").addClass("hidden");
         },
 
         /**
@@ -177,9 +234,10 @@ var ZY=(function(){
          * @param url
          */
         showArticle:function(url){
-            wrap.removeClass("hidden");
+            this.showWrap();
+            body.addClass("noscroll");
             TweenLite.to(contentEl, 1, {css:{top:0}});
-            mainContent.html("<div class='loadingSpinner'></div>");
+            mainContent.html(loadingHtml);
             mainContent.load(url);
         },
 
@@ -187,20 +245,12 @@ var ZY=(function(){
          * 隐藏单篇文章
          */
         hideArticle:function(){
-            wrap.addClass("hidden");
-            mainContent.html("<div class='loadingSpinner'></div>");
+            this.hideWrap();
+            body.removeClass("noscroll");
+            mainContent.html(loadingHtml);
             TweenLite.to(contentEl, 1, {css:{top:"-100%"},onComplete:function(){
                 mainContent.html("");
             }});
-        },
-
-        /**
-         * 浏览器版本过低
-         */
-        browseWarn:function(){
-            $("#wrap").removeClass("hidden");
-            alert("很抱歉，本站使用的一些HTML5特性，您的浏览器可能不支持，为了获得最佳浏览体验，建议您将浏览器升级到最新版本，" +
-                "或选用其他兼容HTML5的浏览器，我们推荐Chrome浏览器和火狐浏览器。！");
         }
     }
 })();

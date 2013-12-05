@@ -8,19 +8,11 @@
 
 $(document).ready(function(){
 
-    //窗口滚动事件
-    $(window).scroll(function(){
-        ZY.windowScroll();
-    });
-
     //菜单点击事件
     $("#menu li>a").click(function(){
 
-        //如果页面上的图片资源没有加载完成，不能响应
-        if(document.readyState=="complete"){
-            var target=$(this).attr("href");
-            ZY.scrollToTarget($(target));
-        }
+        var target=$(this).attr("href");
+        ZY.scrollToTarget($(target));
 
         return false;
     });
@@ -61,7 +53,7 @@ $(document).ready(function(){
 
         return false;
     });
-    //关闭文章系那是
+    //关闭文章
     $("#contentClose").click(function(){
         ZY.hideArticle();
     });
@@ -71,12 +63,13 @@ $(document).ready(function(){
         ZY.windowResize();
     });
 
+
+
     //屏幕旋转
     window.onorientationchange=function(){
         ZY.windowResize();
     };
-
-    //初始化
-    ZY.init();
-
 });
+
+
+

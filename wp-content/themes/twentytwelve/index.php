@@ -14,10 +14,13 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="中意工业设计（湖南）有限责任公司网站" />
+    <meta name="keywords" content="中意工业设计，中意工业设计（湖南），设计" />
     <title>中意工业设计（湖南）</title>
     <link type="text/css" rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/app/index.min.css">
-    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/lib/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="<?php echo plugins_url(); ?>/simple-responsive-slider/assets/js/responsiveslides.min.js"></script>
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/app/favicon.png"
+          mce_href="<?php echo get_template_directory_uri(); ?>/images/app/favicon.png" type="image/x-png">
+
 
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/lib/modernizr.js"></script>
     <script type="text/javascript">
@@ -35,16 +38,38 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
                     Modernizr.generatedcontent &&
                     Modernizr.video &&
                     Modernizr.audio,
-                nope:["<?php echo get_template_directory_uri(); ?>/js/src/zyManager.js"],
+                //both:["<?php echo get_template_directory_uri(); ?>/js/lib/jquery-1.10.2.min.js"],
+                nope:["<?php echo get_template_directory_uri(); ?>/js/lib/jquery-1.10.2.min.js",
+                    "<?php echo get_template_directory_uri(); ?>/js/src/zyManager.js"],
                 yep:[
+                    "<?php echo get_template_directory_uri(); ?>/js/lib/jquery-1.10.2.min.js",
+                    "<?php echo plugins_url(); ?>/simple-responsive-slider/assets/js/responsiveslides.min.js",
                     "<?php echo get_template_directory_uri(); ?>/js/lib/TweenMax.min.js",
                     "<?php echo get_template_directory_uri(); ?>/js/lib/ScrollToPlugin.min.js",
-                    "<?php echo get_template_directory_uri(); ?>/js/src/index.min.js"
-
+                    "<?php echo get_template_directory_uri(); ?>/js/build/index.min.js"
                 ],
-                callback:function(key,testResult){
-                    if(testResult!==true&&key=="<?php echo get_template_directory_uri(); ?>/js/src/zyManager.js"){
-                        ZY.browseWarn();
+                callback:function(url,testResult){
+                    if(testResult!==true&&url==="<?php echo get_template_directory_uri(); ?>/js/src/zyManager.js"){
+
+                        $("body").append("<div class='popOut'>很抱歉，本站使用的一些HTML5特性，您的浏览器可能不支持，为了获得最佳浏览体验，建议您将浏览器升级到最新版本，" +
+                            "或选用其他兼容HTML5的浏览器，我们推荐Chrome浏览器和火狐浏览器。！</div>");
+                    }else{
+
+                        //初始化高度等
+                        if(url==="<?php echo get_template_directory_uri(); ?>/js/build/index.min.js"){
+                            <?php
+                                global $simple_responsive_slider;
+
+                                $simple_responsive_slider->dynamics_scripts();
+                           ?>
+                            if(document.readyState==="complete"){
+                                ZY.init();
+                            }else{
+                                window.onload=function(){
+                                    ZY.init();
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -53,11 +78,6 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
 
     <!--执行一次加载头部文件，有些插件可能需要-->
     <?php /*wp_head(); */?>
-    <?php
-        global $simple_responsive_slider;
-
-        $simple_responsive_slider->dynamics_scripts();
-    ?>
 </head>
 <body>
 <!--菜单-->
@@ -167,14 +187,15 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
                                 $showDir= wp_get_attachment_image_src($thumbnail_id,"post-thumbnail");
                                 $showDir=$showDir[0];
                             }else{
-                                $showDir=get_template_directory_uri()."/images/app/defaultThumb.png";
+                                $showDir=get_template_directory_uri()."/images/app/defaultThumb.jpg";
                             }
                             ?>
                             <li class="productArticle">
                                 <a href="<?php the_permalink(); ?>" target="_blank">
                                     <div class="thumb">
                                         <img src="<?php echo $showDir; ?>">
-                                        <div><span>查看</span></div>
+                                        <div>遮盖层</div>
+                                        <span>查看</span>
                                     </div>
                                     <div class="abstract">
                                         <h3><?php the_title(); ?></h3>
@@ -199,14 +220,15 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
                                 $showDir= wp_get_attachment_image_src($thumbnail_id,"post-thumbnail");
                                 $showDir=$showDir[0];
                             }else{
-                                $showDir=get_template_directory_uri()."/images/app/defaultThumb.png";
+                                $showDir=get_template_directory_uri()."/images/app/defaultThumb.jpg";
                             }
                             ?>
                             <li class="productArticle">
                                 <a href="<?php echo get_permalink($post_id); ?>" target="_blank">
                                     <div class="thumb">
                                         <img src="<?php echo $showDir; ?>">
-                                        <div><span>查看</span></div>
+                                        <div>遮盖层</div>
+                                        <span>查看</span>
                                     </div>
                                     <div class="abstract">
                                         <h3><?php echo $post->post_title; ?></h3>
@@ -262,12 +284,12 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
 <footer>
     <h3>联系我们</h3>
     <div class="address">
-        <p>邮箱：zyhndesign@gmail.com</p>
+        <p>邮箱：zyhndesign@zyhndesign.com</p>
         <p>地址：湖南省长沙市岳麓大道233号湖南科技大厦1楼</p>
-        <p class="copyright">Copyright &copy 20013-2015 中意工业设计（湖南）有限责任公司 版权所有 湘ICP备12014319号-5</p>
+        <p class="copyright">Copyright &copy; 20013-2015 中意工业设计（湖南）有限责任公司 版权所有 湘ICP备12014319号-5</p>
     </div>
 </footer>
-<div id="wrap" class="wrap hidden"></div>
+<div id="wrap" class="wrap"><div class='loadingSpinner'></div></div>
 <article id="content" class="content">
     <span class="contentClose" id="contentClose">X</span>
     <section class="mainContent" id="mainContent">
