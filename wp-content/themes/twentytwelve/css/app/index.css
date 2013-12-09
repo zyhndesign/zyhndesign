@@ -511,20 +511,32 @@ footer{
 }
 .content .contentClose{
     display: block;
-    color:#009fd2;
-    background: #000;
-    width: 40px;
-    height: 40px;
-    font-size: 40px;
-    line-height: 40px;
-    margin-left: auto;
+    background:#000;
+    width: 60px;
+    height: 60px;
     cursor:pointer;
     text-align: center;
+    font-size: 0px;
+    margin-left:auto;
+}
+.content .contentClose span{
+    background: url(../../images/app/close.png) no-repeat;
+    transition:1s ease all;
+    -webkit-transition:1s ease all;
+    -moz-transition:1s ease all;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.content .contentClose:hover span{
+    transform:rotate(360deg);
+    -webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
 }
 .mainContent{
     position: relative;
     height: 100%;
-    padding: 40px;
+    padding: 30px 30px 60px 30px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -547,11 +559,11 @@ footer{
 }
 /* 滚动槽 */
 .mainContent::-webkit-scrollbar-track {
-    background:#1a1a1a;
+    background:#c6c6c6;
 }
 /* 滚动条滑块 */
 .mainContent::-webkit-scrollbar-thumb {
-    background: #E83A00;
+    background: #009fd2;
 }
 
 /*----------------------等待动画-----------------------------*/

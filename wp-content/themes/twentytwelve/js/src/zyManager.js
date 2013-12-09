@@ -236,7 +236,7 @@ var ZY=(function(){
         showArticle:function(url){
             this.showWrap();
             body.addClass("noscroll");
-            TweenLite.to(contentEl, 1, {css:{top:0}});
+            TweenLite.to(contentEl, 0.5, {css:{top:0}});
             mainContent.html(loadingHtml);
             mainContent.load(url);
         },
@@ -245,11 +245,12 @@ var ZY=(function(){
          * 隐藏单篇文章
          */
         hideArticle:function(){
-            this.hideWrap();
+            var me=this;
             body.removeClass("noscroll");
             mainContent.html(loadingHtml);
-            TweenLite.to(contentEl, 1, {css:{top:"-100%"},onComplete:function(){
+            TweenLite.to(contentEl, 0.5, {css:{top:"-100%"},onComplete:function(){
                 mainContent.html("");
+                me.hideWrap();
             }});
         }
     }

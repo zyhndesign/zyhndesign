@@ -38,7 +38,6 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
                     Modernizr.generatedcontent &&
                     Modernizr.video &&
                     Modernizr.audio,
-                //both:["<?php echo get_template_directory_uri(); ?>/js/lib/jquery-1.10.2.min.js"],
                 nope:["<?php echo get_template_directory_uri(); ?>/js/lib/jquery-1.10.2.min.js",
                     "<?php echo get_template_directory_uri(); ?>/js/src/zyManager.js"],
                 yep:[
@@ -291,7 +290,9 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
 </footer>
 <div id="wrap" class="wrap"><div class='loadingSpinner'></div></div>
 <article id="content" class="content">
-    <span class="contentClose" id="contentClose">X</span>
+    <div class="contentClose" id="contentClose">
+        <span></span>
+    </div>
     <section class="mainContent" id="mainContent">
         <!--<div class="loadingSpinner"></div>-->
     </section>
