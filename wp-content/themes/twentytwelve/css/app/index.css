@@ -41,7 +41,7 @@ nav h1{
     margin:0px 0px 0px 6.6%;
 }
 nav .logo{
-    background: url(../../images/app/logoWhite.png) no-repeat;
+    background: url(../../images/app/sprite.png) no-repeat -2px -2px;
     font-size: 0px;
     display: block;
     width: 100%;
@@ -79,7 +79,7 @@ nav.active{
     background: #f6f6f6;
 }
 nav.active .logo{
-    background: url(../../images/app/logoBlack.png) no-repeat;
+    background: url(../../images/app/sprite.png) no-repeat -2px -45px;
 }
 nav.active ul li a{
     color:#000;
@@ -96,12 +96,11 @@ nav.active ul li a:hover,nav.active ul li a.active{
 /*-------------------------------最新文章-------------------*/
 .topHeader{
     width: 100%;
-    height: 590px;
+    height: auto;
     position: relative;
 }
 .topHeader img{
     width: 100%;
-    height: 100%;
 }
 .topPost{
     position: absolute;
@@ -130,7 +129,7 @@ nav.active ul li a:hover,nav.active ul li a.active{
     height: 28px;
     width: 45px;
     font-size: 0px;
-    background: url(../../images/app/down.png) no-repeat;
+    background: url(../../images/app/sprite.png) no-repeat -169px -88px;
     cursor: pointer;
 }
 
@@ -176,10 +175,10 @@ nav.active ul li a:hover,nav.active ul li a.active{
     line-height: 41px;
 }
 h3.imageIntroduce{
-    background: url(../../images/app/imageIntroduceBg.png) no-repeat;
+    background: url(../../images/app/sprite.png) no-repeat -193px -2px;
 }
 h3.homeIntroduce{
-    background: url(../../images/app/homeIntroduceBg.png) no-repeat;
+    background: url(../../images/app/sprite.png) no-repeat -193px -45px;
 }
 h3.readIntroduce{
     background: url(../../images/app/readIntroduceBg.png) no-repeat;
@@ -228,11 +227,11 @@ h3.readIntroduce{
     cursor: pointer;
 }
 .product .prevPage{
-    background: url(../../images/app/prevPage.png) no-repeat;
+    background: url(../../images/app/sprite.png) no-repeat  -59px -193px;
     left:0px;
 }
 .product .nextPage{
-    background: url(../../images/app/nextPage.png) no-repeat;
+    background: url(../../images/app/sprite.png) no-repeat -2px -193px;
     right:0px;
 }
 .listContainer{
@@ -296,7 +295,7 @@ h3.readIntroduce{
 .productArticle .thumb span{
     width:104px;
     height: 103px;
-    background: url(../../images/app/checkPost.png) no-repeat;
+    background: url(../../images/app/sprite.png) no-repeat -2px -88px;
     position:absolute;
     top:-104px;
     left:50%;
@@ -533,7 +532,7 @@ footer{
     background: #f6f6f6;
     overflow-y: auto;
 }
-.mainContent .entryTitle{
+.mainContent .entryTitle:before{
     background: url(../../images/app/discBlue.png) no-repeat center left;
     padding-left: 10px;
     margin: 0px;
@@ -575,7 +574,7 @@ footer{
 .loadingSpinner{
     width:41px;
     height:41px;
-    background:url(../../images/app/loading.png) no-repeat;
+    background:url(../../images/app/sprite.png) no-repeat -108px -131px;
     animation: spin 4s infinite linear reverse;
     -webkit-animation: spin 4s infinite linear reverse;
     -moz-animation: spin 4s infinite linear reverse;

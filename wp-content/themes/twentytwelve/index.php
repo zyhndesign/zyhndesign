@@ -286,7 +286,7 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
     <div class="address">
         <p>邮箱：zyhndesign@zyhndesign.com</p>
         <p>地址：湖南省长沙市岳麓大道233号湖南科技大厦1楼</p>
-        <p class="copyright">Copyright &copy; 20013-2015 中意工业设计（湖南）有限责任公司 版权所有 湘ICP备12014319号-5</p>
+        <p class="copyright">Copyright &copy; 2013 中意工业设计（湖南）有限责任公司 版权所有 湘ICP备12014319号-5</p>
     </div>
 </footer>
 <div id="wrap" class="wrap"><div class='loadingSpinner'></div></div>
