@@ -824,7 +824,7 @@ function zy_action_uploadfile()
  * */
 add_action('wp_ajax_uploadfile', 'zy_action_uploadfile');
 //火狐里面这个地方不会带登陆标志过来，需要加下面这句
-add_action('wp_ajax_nopriv_uploadfile', 'zy_action_uploadfile');
+//add_action('wp_ajax_nopriv_uploadfile', 'zy_action_uploadfile');
 
 /*===================================================数据清理=====================================*/
 /**

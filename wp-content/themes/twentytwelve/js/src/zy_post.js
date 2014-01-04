@@ -57,12 +57,12 @@ jQuery(document).ready(function($){
         * */
         "zy_backgroun_uploader":function(){
             var uploader_background = new plupload.Uploader({
-                runtimes:"flash",
+                runtimes:"html5",
                 multi_selection:false,
                 max_file_size:"20mb",
                 browse_button:"zy_upload_background_button",
                 container:"zy_background_container",
-                flash_swf_url:'../wp-includes/js/plupload/plupload.flash.swf',
+                //flash_swf_url:'../wp-includes/js/plupload/plupload.flash.swf',
                 url:ajaxurl,
                 filters:[
                     {title:"Background files", extensions:"jpg,gif,png,jpeg,mp4"}

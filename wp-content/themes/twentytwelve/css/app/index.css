@@ -23,8 +23,9 @@ li{
 .hidden{
     display: none;
 }
+/*手机上面必须加important才有效果*/
 .noscroll{
-    overflow: hidden;
+    overflow: hidden !important;
 }
 /*----------------------菜单部分-----------*/
 nav{
