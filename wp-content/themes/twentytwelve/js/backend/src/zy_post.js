@@ -16,7 +16,8 @@ jQuery(document).ready(function($){
             $("#zy_background_content").remove();
             $("#zy_background").val("");
             $("#zy_background_percent").text("");
-            $("<img id='zy_background_content'  class='zy_background' src='" + zy_config.zy_template_url + "/images/backend/app/zy_default_background.png'>").
+            $("<img id='zy_background_content'  class='zy_background' src='" +
+                zy_config.zy_template_url + "/images/backend/app/zy_default_background.png'>").
                 appendTo($("#zy_background_container"));
         },
 
@@ -43,7 +44,8 @@ jQuery(document).ready(function($){
             $("#zy_background_content").remove();
             var string = "";
             if (extension == "mp4") {
-                string = "<video id='zy_background_content' class='zy_background' controls><source src='" +filepath + "' type='video/mp4' /></video>";
+                string = "<video id='zy_background_content' class='zy_background' controls><source src='" +
+                    filepath + "' type='video/mp4' /></video>";
                 $("#zy_background_container").append(string);
             } else {
                 string = "<img id='zy_background_content' class='zy_background' src='" + filepath + "'>";
