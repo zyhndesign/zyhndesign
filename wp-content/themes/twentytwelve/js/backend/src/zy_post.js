@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
             $("#zy_background_content").remove();
             $("#zy_background").val("");
             $("#zy_background_percent").text("");
-            $("<img id='zy_background_content'  class='zy_background' src='" + zy_config.zy_template_url + "/images/app/zy_default_background.png'>").
+            $("<img id='zy_background_content'  class='zy_background' src='" + zy_config.zy_template_url + "/images/backend/app/zy_default_background.png'>").
                 appendTo($("#zy_background_container"));
         },
 
