@@ -578,7 +578,7 @@ function zy_post_background_box($post)
 
         } else {
 
-            echo "<img id='zy_background_content'  class='zy_background' src='" . get_template_directory_uri() . "/images/app/defaultBackground.png'>";
+            echo "<img id='zy_background_content'  class='zy_background' src='" . get_template_directory_uri() . "/images/backend/app/defaultBackground.png'>";
 
         }
 
