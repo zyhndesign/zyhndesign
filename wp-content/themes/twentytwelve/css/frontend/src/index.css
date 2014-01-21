@@ -42,7 +42,7 @@ nav h1{
     margin:0px 0px 0px 6.6%;
 }
 nav .logo{
-    background: url(../../images/app/sprite.png) no-repeat -2px -2px;
+    background: url(../../../images/frontend/app/sprite.png) no-repeat -2px -2px;
     font-size: 0px;
     display: block;
     width: 100%;
@@ -80,7 +80,7 @@ nav.active{
     background: #f6f6f6;
 }
 nav.active .logo{
-    background: url(../../images/app/sprite.png) no-repeat -2px -45px;
+    background: url(../../../images/frontend/app/sprite.png) no-repeat -2px -45px;
 }
 nav.active ul li a{
     color:#000;
@@ -130,7 +130,7 @@ nav.active ul li a:hover,nav.active ul li a.active{
     height: 28px;
     width: 45px;
     font-size: 0px;
-    background: url(../../images/app/sprite.png) no-repeat -169px -88px;
+    background: url(../../../images/frontend/app/sprite.png) no-repeat -169px -88px;
     cursor: pointer;
 }
 
@@ -176,13 +176,13 @@ nav.active ul li a:hover,nav.active ul li a.active{
     line-height: 41px;
 }
 h3.imageIntroduce{
-    background: url(../../images/app/sprite.png) no-repeat -193px -2px;
+    background: url(../../../images/frontend/app/sprite.png) no-repeat -193px -2px;
 }
 h3.homeIntroduce{
-    background: url(../../images/app/sprite.png) no-repeat -193px -45px;
+    background: url(../../../images/frontend/app/sprite.png) no-repeat -193px -45px;
 }
 h3.readIntroduce{
-    background: url(../../images/app/readIntroduceBg.png) no-repeat;
+    background: url(../../../images/frontend/app/readIntroduceBg.png) no-repeat;
 }
 .index ul li p{
     font-size: 14px;
@@ -228,11 +228,11 @@ h3.readIntroduce{
     cursor: pointer;
 }
 .product .prevPage{
-    background: url(../../images/app/sprite.png) no-repeat  -59px -193px;
+    background: url(../../../images/frontend/app/sprite.png) no-repeat  -59px -193px;
     left:0px;
 }
 .product .nextPage{
-    background: url(../../images/app/sprite.png) no-repeat -2px -193px;
+    background: url(../../../images/frontend/app/sprite.png) no-repeat -2px -193px;
     right:0px;
 }
 .listContainer{
@@ -296,7 +296,7 @@ h3.readIntroduce{
 .productArticle .thumb span{
     width:104px;
     height: 103px;
-    background: url(../../images/app/sprite.png) no-repeat -2px -88px;
+    background: url(../../../images/frontend/app/sprite.png) no-repeat -2px -88px;
     position:absolute;
     top:-104px;
     left:50%;
@@ -384,7 +384,7 @@ h3.readIntroduce{
     text-decoration: none;
     height: 61px;
     width: 38px;
-    background: transparent url("../../images/app/themes.gif") no-repeat left top;
+    background: transparent url("../../../images/app/themes.gif") no-repeat left top;
     margin-top: -55px;
 }
 
@@ -467,7 +467,7 @@ h3.readIntroduce{
     padding:0px;
 }
 .inviteTypes ul li{
-    list-style: disc inside url(../../images/app/discBlue.png);
+    list-style: disc inside url(../../../images/frontend/app/discBlue.png);
     line-height: 30px;
 }
 .inviteTypes ul li a{
@@ -477,7 +477,7 @@ h3.readIntroduce{
 
 /*------------------底部-------------------*/
 footer{
-    background: url(../../images/app/footerBg.png) repeat-x;
+    background: url(../../../images/frontend/app/footerBg.png) repeat-x;
     color:white;
     height: 200px;
     padding-left:15%;
@@ -521,7 +521,7 @@ footer{
     margin-left:auto;
 }
 .content .contentClose span{
-    background: url(../../images/app/close.png) no-repeat;
+    background: url(../../../images/frontend/app/close.png) no-repeat;
     transition:1s ease all;
     -webkit-transition:1s ease all;
     -moz-transition:1s ease all;
@@ -546,7 +546,7 @@ footer{
     overflow-y: auto;
 }
 .mainContent .entryTitle:before{
-    background: url(../../images/app/discBlue.png) no-repeat center left;
+    background: url(../../../images/frontend/app/discBlue.png) no-repeat center left;
     padding-left: 10px;
     margin: 0px;
 }
@@ -587,7 +587,7 @@ footer{
 .loadingSpinner{
     width:41px;
     height:41px;
-    background:url(../../images/app/sprite.png) no-repeat -108px -131px;
+    background:url(../../../images/frontend/app/sprite.png) no-repeat -108px -131px;
     animation: spin 4s infinite linear reverse;
     -webkit-animation: spin 4s infinite linear reverse;
     -moz-animation: spin 4s infinite linear reverse;

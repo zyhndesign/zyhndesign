@@ -17,12 +17,12 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
     <meta name="description" content="中意工业设计（湖南）有限责任公司网站" />
     <meta name="keywords" content="中意工业设计，中意工业设计（湖南），设计" />
     <title>中意工业设计（湖南）</title>
-    <link type="text/css" rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/app/index.min.css">
+    <link type="text/css" rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/frontend/build/index.min.css">
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/app/favicon.png"
           mce_href="<?php echo get_template_directory_uri(); ?>/images/app/favicon.png" type="image/x-png">
 
 
-    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/lib/modernizr.js"></script>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/frontend/lib/modernizr.js"></script>
     <script type="text/javascript">
         //加载资源
         Modernizr.load([
@@ -38,24 +38,24 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
                     Modernizr.generatedcontent &&
                     Modernizr.video &&
                     Modernizr.audio,
-                nope:["<?php echo get_template_directory_uri(); ?>/js/lib/jquery-1.10.2.min.js",
-                    "<?php echo get_template_directory_uri(); ?>/js/src/zyManager.js"],
+                nope:["<?php echo get_template_directory_uri(); ?>/js/frontend/lib/jquery-1.10.2.min.js",
+                    "<?php echo get_template_directory_uri(); ?>/js/frontend/src/zyManager.js"],
                 yep:[
-                    "<?php echo get_template_directory_uri(); ?>/js/lib/jquery-1.10.2.min.js",
+                    "<?php echo get_template_directory_uri(); ?>/js/frontend/lib/jquery-1.10.2.min.js",
                     "<?php echo plugins_url(); ?>/simple-responsive-slider/assets/js/responsiveslides.min.js",
-                    "<?php echo get_template_directory_uri(); ?>/js/lib/TweenMax.min.js",
-                    "<?php echo get_template_directory_uri(); ?>/js/lib/ScrollToPlugin.min.js",
-                    "<?php echo get_template_directory_uri(); ?>/js/build/index.min.js"
+                    "<?php echo get_template_directory_uri(); ?>/js/frontend/lib/TweenMax.min.js",
+                    "<?php echo get_template_directory_uri(); ?>/js/frontend/lib/ScrollToPlugin.min.js",
+                    "<?php echo get_template_directory_uri(); ?>/js/frontend/build/index.min.js"
                 ],
                 callback:function(url,testResult){
-                    if(testResult!==true&&url==="<?php echo get_template_directory_uri(); ?>/js/src/zyManager.js"){
+                    if(testResult!==true&&url==="<?php echo get_template_directory_uri(); ?>/js/frontend/src/zyManager.js"){
 
                         $("body").append("<div class='popOut'>很抱歉，本站使用的一些HTML5特性，您的浏览器可能不支持，为了获得最佳浏览体验，建议您将浏览器升级到最新版本，" +
                             "或选用其他兼容HTML5的浏览器，我们推荐Chrome浏览器和火狐浏览器。！</div>");
                     }else{
 
                         //初始化高度等
-                        if(url==="<?php echo get_template_directory_uri(); ?>/js/build/index.min.js"){
+                        if(url==="<?php echo get_template_directory_uri(); ?>/js/frontend/build/index.min.js"){
                             <?php
                                 global $simple_responsive_slider;
 
@@ -105,13 +105,13 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
             $background=json_decode($background,true);
             $background_src=$background["filepath"];
         }else{
-            $background_src=get_template_directory_uri()."/images/app/defaultArticleBg.jpg";
+            $background_src=get_template_directory_uri()."/images/frontend/app/defaultArticleBg.jpg";
         }
     ?>
 
         <img src="<?php echo $background_src ?>">
         <div class="topPost">
-            <h2><a href="<?php echo get_permalink($postId); ?>" target="_blank"><?php echo $post->post_title ?></a></h2>
+            <h2><a class="postLink" href="<?php echo get_permalink($postId); ?>" target="_blank"><?php echo $post->post_title ?></a></h2>
             <p class="date"><?php echo mysql2date("Y-m-d", $post->post_date); ?></p>
         </div>
 
@@ -171,76 +171,50 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
     <a class="nextPage hidden" id="nextPage">下一页</a>
     <div class="listContainer" id="listContainer">
         <?php
+            $class="";
             foreach($productCategories as $key=>$value){
                 $posts=get_posts(array('posts_per_page' => -1,  'category' => $value->term_id ));
-                if($key==0){
-                   ?>
-                    <ul class="productList">
-                        <?php
-
-                        foreach($posts as $post){
-                            $post_id=$post->ID;
-                            setup_postdata($post);
-                            if(has_post_thumbnail($post_id)){
-                                $thumbnail_id=get_post_thumbnail_id($post_id);
-                                $showDir= wp_get_attachment_image_src($thumbnail_id,"post-thumbnail");
-                                $showDir=$showDir[0];
-                            }else{
-                                $showDir=get_template_directory_uri()."/images/app/defaultThumb.jpg";
-                            }
-                            ?>
-                            <li class="productArticle">
-                                <a href="<?php the_permalink(); ?>" target="_blank">
-                                    <div class="thumb">
-                                        <img src="<?php echo $showDir; ?>">
-                                        <div>遮盖层</div>
-                                        <span>查看</span>
-                                    </div>
-                                    <div class="abstract">
-                                        <h3><?php the_title(); ?></h3>
-                                        <p><?php echo get_the_date("Y-m-d"); ?></p>
-                                    </div>
-                                </a>
-                            </li>
-                        <?php
-                        }
-                        wp_reset_postdata();
-                        ?>
-                    </ul>
-                   <?php
+                if($key===0){
+                    $class="productList";
                 }else{
-                   ?>
-                    <ul class="productList hidden">
-                        <?php
-                        foreach($posts as $post){
-                            $post_id=$post->ID;
-                            if(has_post_thumbnail($post_id)){
-                                $thumbnail_id=get_post_thumbnail_id($post_id);
-                                $showDir= wp_get_attachment_image_src($thumbnail_id,"post-thumbnail");
-                                $showDir=$showDir[0];
-                            }else{
-                                $showDir=get_template_directory_uri()."/images/app/defaultThumb.jpg";
-                            }
-                            ?>
-                            <li class="productArticle">
-                                <a href="<?php echo get_permalink($post_id); ?>" target="_blank">
-                                    <div class="thumb">
-                                        <img src="<?php echo $showDir; ?>">
-                                        <div>遮盖层</div>
-                                        <span>查看</span>
-                                    </div>
-                                    <div class="abstract">
-                                        <h3><?php echo $post->post_title; ?></h3>
-                                        <p><?php echo mysql2date("Y-m-d", $post->post_date); ?></p>
-                                    </div>
-                                </a>
-                            </li>
-                        <?php
+                    $class="productList hidden";
+                }
+
+               ?>
+                <ul class="<?php echo $class ?>">
+                    <?php
+
+                    foreach($posts as $post){
+                        $post_id=$post->ID;
+                        setup_postdata($post);
+                        if(has_post_thumbnail($post_id)){
+                            $thumbnail_id=get_post_thumbnail_id($post_id);
+                            $showDir= wp_get_attachment_image_src($thumbnail_id,"post-thumbnail");
+                            $showDir=$showDir[0];
+                        }else{
+                            $showDir=get_template_directory_uri()."/images/frontend/app/defaultThumb.jpg";
                         }
                         ?>
-                    </ul>
-                   <?php
-                }
+                        <li class="productArticle">
+                            <a class="postLink" href="<?php the_permalink(); ?>" target="_blank">
+                                <div class="thumb">
+                                    <img src="<?php echo $showDir; ?>">
+                                    <div>遮盖层</div>
+                                    <span>查看</span>
+                                </div>
+                                <div class="abstract">
+                                    <h3><?php the_title(); ?></h3>
+                                    <p><?php echo get_the_date("Y-m-d"); ?></p>
+                                </div>
+                            </a>
+                        </li>
+                    <?php
+                    }
+                    wp_reset_postdata();
+                    ?>
+                </ul>
+
+               <?php
             }
         ?>
     </div>
@@ -269,7 +243,7 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
                     $posts=get_posts(array('posts_per_page' => -1,  'category' => $value->term_id ));
                     foreach($posts as $post){
                     ?>
-                        <li><a href="<?php echo get_permalink($post->ID); ?>" target="_blank"><?php echo $post->post_title; ?></a></li>
+                        <li><a class="postLink" href="<?php echo get_permalink($post->ID); ?>" target="_blank"><?php echo $post->post_title; ?></a></li>
                     <?php
                     }
                     ?>

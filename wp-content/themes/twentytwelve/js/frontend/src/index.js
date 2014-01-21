@@ -48,7 +48,7 @@ $(document).ready(function(){
     });
 
     //显示文章
-    $(".inviteTypes a,.productList a,.topPost a").click(function(){
+    $("a.postLink").click(function(){
         ZY.showArticle($(this).attr("href"));
 
         return false;
