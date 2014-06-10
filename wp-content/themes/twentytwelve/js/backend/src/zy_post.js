@@ -137,14 +137,6 @@ jQuery(document).ready(function($){
         if(insideP.length<=1){
             alert("没有上传缩略图！");
             return false;
-        }else{
-            var image = new Image();//new一个image对象
-            image.src=insideP.eq(0).find("img").attr("src");
-            if(image.width!==image.height){
-                alert("缩略图比例不是1:1！");
-                return false;
-            }
-
         }
     });
 });

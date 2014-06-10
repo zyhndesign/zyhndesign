@@ -18,8 +18,8 @@ $joinUsCategories=get_categories(array("parent"=>$joinUsId,"hide_empty"=>false,'
     <meta name="keywords" content="中意工业设计，中意工业设计（湖南），设计" />
     <title>中意工业设计（湖南）</title>
     <link type="text/css" rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/frontend/build/index.min.css">
-    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/app/favicon.png"
-          mce_href="<?php echo get_template_directory_uri(); ?>/images/app/favicon.png" type="image/x-png">
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/frontend/app/favicon.png"
+          mce_href="<?php echo get_template_directory_uri(); ?>/images/frontend/app/favicon.png" type="image/x-png">
 
 
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/frontend/lib/modernizr.js"></script>
