@@ -137,6 +137,19 @@ jQuery(document).ready(function($){
         if(insideP.length<=1){
             alert("没有上传缩略图！");
             return false;
+        }else{
+            /*用下面这种方案，应该是要异步加载并且使用when的，但是在这里，点击的时候图片已经加载了，所以直接获取就可以了。
+             不过wordpress这里设置缩略图是异步的，只要设置了就保存了，如果不点击更新这里也是检测不到来的，但是缩略图已经设置了。
+             上述问题留待后期解决（主要是在图片加载的时候就判断了）*/
+
+            var image = new Image();//new一个image对象
+
+            image.src=insideP.eq(0).find("img").attr("src");
+
+            if(image.width!==image.height){
+                alert("缩略图比例不是1:1");
+                return false;
+            }
         }
     });
 });

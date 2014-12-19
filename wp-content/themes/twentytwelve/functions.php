@@ -726,7 +726,6 @@ function zy_save_own_data($post_id)
 }
 
 add_action('publish_post', 'zy_save_own_data');
-//add_action('pre_post_update','zy_data_save');
 
 //禁用自动保存草稿
 function zy_disable_autosave(){
@@ -738,6 +737,7 @@ add_action("wp_print_scripts","zy_disable_autosave");
  * 删除数据库多余的记录
  * */
 //禁用修订版本
+//remove_action("pre_post_updated", "wp_save_post_revision");//3.7之后不在这个hook上
 remove_action("post_updated", "wp_save_post_revision");
 function zy_delete_autodraft($post_id)
 {
@@ -793,6 +793,8 @@ function zy_action_uploadfile()
     $tmp_dir = $dir["basedir"] . "/tmp";
     $target_dir = $tmp_dir . "/" . $user_id;
 
+
+
     //创建文件夹
     if (!is_dir($tmp_dir)) {
         if (!mkdir($tmp_dir)) {
@@ -807,6 +809,8 @@ function zy_action_uploadfile()
         }
     }
 
+
+    //sleep(200);
 
     //此处需要文件转码才能支持中文
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_dir . "/" . $filename)) {
@@ -865,6 +869,7 @@ function zy_delete_post($post_id)
 }
 
 add_action('deleted_post', 'zy_delete_post');
+
 
 
 
